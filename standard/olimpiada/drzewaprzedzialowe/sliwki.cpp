@@ -15,11 +15,9 @@ void update(int _ind, int _val){
     
     _ind /= 2;
     while(_ind > 0){
-        tab2[_ind][0] = tab2[2*_ind][0] + tab2[2*_ind + 1][0];
-        tab2[_ind][1] = tab2[2*_ind][1] + tab2[2*_ind + 1][1];
-        tab2[_ind][2] = tab2[2*_ind][2] + tab2[2*_ind + 1][2];
-        tab2[_ind][3] = tab2[2*_ind][3] + tab2[2*_ind + 1][3];
-        tab2[_ind][4] = tab2[2*_ind][4] + tab2[2*_ind + 1][4];
+        for(int i = 0; i < 5; i++){
+            tab2[_ind][i] = tab2[2*_ind][i] + tab2[2*_ind + 1][i];
+        }
         _ind /= 2;
     }
 }
@@ -30,7 +28,6 @@ int query(int _start, int _end, int _mod){
     if(_start == _end) return tab2[_start][_mod-1];
 
     int res = tab2[_start][_mod-1] + tab2[_end][_mod-1];
-
     while(_start/2 != _end/2){
         if(_start % 2 == 0) res += tab2[_start + 1][_mod-1];
         if(_end % 2 == 1) res += tab2[_end-1][_mod-1];
@@ -42,8 +39,17 @@ int query(int _start, int _end, int _mod){
 
 int main(){
     cin.tie(0); cout.tie(0); ios_base::sync_with_stdio(0);
+    
     int n, q;
     cin>>n>>q;
+    for(int i = base; i <= base + n; i++){
+        for(int j = 0; j < 5; j++){
+            tab2[i][j] = 1;
+        }
+    }
+    for(int i = 1; i <= base+1; i++){
+        update(i, 0);
+    }
     for(int i = 0; i < q; i++){
         string x;
         cin>>x;
