@@ -3,38 +3,37 @@ using namespace std;
 
 const int base = 1 << 17;
 int tab[2*base]; //values
-int tab2[2*base]; //how many are divisible
-//25 czas
-void add(int _ind, int _val){
-    _ind += base;
-    tab[_ind] += _val;
-    _ind /= 2;
-    while(_ind > 0){
-        tab[_ind] = tab[2*_ind] + tab[2*_ind + 1];
-        _ind /= 2;
-    }
-}
+int tab2[2*base][5]; //how many are divisible
 
-void setup(int _ind, int _mod){
+void update(int _ind, int _val){
+    int ind = _ind - 1;
+    tab[ind] += _val;
     _ind += base;
-    tab2[_ind] = (tab[_ind]%_mod == 0? 1 : 0);
+    for(int i = 0; i < 5; i++){
+        tab2[_ind][i] = (tab[ind]%(i+1) == 0? 1 : 0);
+    }
+    
     _ind /= 2;
     while(_ind > 0){
-        tab2[_ind] = tab2[2*_ind] + tab2[2*_ind + 1];
+        tab2[_ind][0] = tab2[2*_ind][0] + tab2[2*_ind + 1][0];
+        tab2[_ind][1] = tab2[2*_ind][1] + tab2[2*_ind + 1][1];
+        tab2[_ind][2] = tab2[2*_ind][2] + tab2[2*_ind + 1][2];
+        tab2[_ind][3] = tab2[2*_ind][3] + tab2[2*_ind + 1][3];
+        tab2[_ind][4] = tab2[2*_ind][4] + tab2[2*_ind + 1][4];
         _ind /= 2;
     }
 }
 
 int query(int _start, int _end, int _mod){
-    int res = 0;
-    _start = _start + base - 1;
-    _end = _end + base + 1;
-    for(int i = 0; i < base; i++){
-        setup(i, _mod);
-    }
+    _start += base;
+    _end += base;
+    if(_start == _end) return tab2[_start][_mod-1];
+
+    int res = tab2[_start][_mod-1] + tab2[_end][_mod-1];
+
     while(_start/2 != _end/2){
-        if(_start % 2 == 0) res += tab2[_start + 1];
-        if(_end % 2 == 1) res += tab2[_end-1];
+        if(_start % 2 == 0) res += tab2[_start + 1][_mod-1];
+        if(_end % 2 == 1) res += tab2[_end-1][_mod-1];
         _start /= 2;
         _end /= 2;
     }
@@ -51,7 +50,7 @@ int main(){
         if(x == "DODAJ"){
             int a, b;
             cin>>a>>b;
-            add(a, b);
+            update(a, b);
         }else{
             int a,b,c;
             cin>>a>>b>>c;
