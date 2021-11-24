@@ -4,7 +4,7 @@ using namespace std;
 const int base = 1 << 17;
 int tab[2*base]; //values
 int tab2[2*base][5]; //how many are divisible
-
+//KURWAAAAAAAAAAAAA WESSZZZLOOOOO NAAAAA 100 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 void update(int _ind, int _val){
     int ind = _ind - 1;
     tab[ind] += _val;
@@ -42,12 +42,7 @@ int main(){
     
     int n, q;
     cin>>n>>q;
-    for(int i = base; i <= base + n; i++){
-        for(int j = 0; j < 5; j++){
-            tab2[i][j] = 1;
-        }
-    }
-    for(int i = 1; i <= base+1; i++){
+    for(int i = 1; i < base; i++){
         update(i, 0);
     }
     for(int i = 0; i < q; i++){
