@@ -25,6 +25,7 @@ int main(){
     cin.tie(0); cout.tie(0); ios_base::sync_with_stdio(0);
     int n, m, a, b;
     cin>>n>>m;
+    //mozna sprawdzic po prostu czy m = n - 1, zamiast sprawdzac czy ma cykle
     for(int i = 0; i < m; i++){
         cin>>a>>b;
         tab[a].push_back(b);
