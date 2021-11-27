@@ -6,6 +6,9 @@ queue<int> q;
 int dist[1000010];
 //20 czas
 int main(){
+//bierzemy dowolny punkt szukamy najbardziej odleglego punktu, nastepnie szukamy najbardziej odleglego punktu 
+//od punktu najbardziej odleglego od punktu poczatkowego skreslamy z grafu tylko te ktore maja jedna krawedz oraz ktore
+//nie sa zaznaczone
     cin.tie(0); cout.tie(0); ios_base::sync_with_stdio(0);
     int n, k;
     cin>>n>>k;
