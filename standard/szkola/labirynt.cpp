@@ -17,12 +17,12 @@ int main(){
     }
     cout<<'\n';
     int x = 0;
-    while(getline(plik, linia)){
+    do{
         cout<<x<<(x < 10? " " : "")<<setw(3);
         for(auto e : linia) cout<<(e == 'X'? 'X' : ' ')<<setw(3);
         x++;
         cout<<'\n';
-    }
+    }while(getline(plik, linia));
     plik.close();
 
 
