@@ -10,23 +10,29 @@ struct point{
 };
 
 ostream &operator<<(ostream &wyjscie, const point &p){
-        return wyjscie<<p.x<<" "<<p.y<<'\n';
+        return wyjscie<<p.y<<" "<<p.x<<'\n';
 }
 
+vector<point> points;
 vector<point> tab[100][100];
 bool vis[100][100];
 
 void nope(){
-    cout<<"no valid way";
+    cout<<"VALID PATH DOES NOT EXIST";
     exit(0);
 }
 
-void DFS(point p, point end_val){
-    vis[p.x][p.y] = true;
+void yes(){
+    cout<<"VALID PATH EXISTS";
+    exit(0);
+}
 
-    for(auto sasiad : tab[p.x][p.y]){
+void DFS(point a, point end){
+    vis[a.x][a.y] = true;
+
+    for(auto sasiad : tab[a.x][a.y]){
         if(!vis[sasiad.x][sasiad.y]){
-            DFS(sasiad, end_val);
+            DFS(sasiad, end);
         }
     }
 }
@@ -37,7 +43,7 @@ int main(){
     plik.open("labirynt.txt");
     string temp;
     point end_cord = {0,0};
-    point start_cord;
+    point start_cord = {0,0};
     bool startline = false;
     while(getline(plik, temp)){
         for(string::iterator it = temp.begin(); it != temp.end(); it++){
@@ -52,33 +58,49 @@ int main(){
         }
         end_cord.y++;
     }
-    //drzwi naprzeciwko mojego pokoju, czesci sa na rozowym talerzu
-    //przesuwne drzwi u iwa
-    //przesuwne drzwi u laury
     plik.close();
+
     end_cord.y--;
     cout<<start_cord;
     cout<<end_cord;
-
+    cout<<endl;
     plik.open("labirynt.txt");
+
     string linia;
-    int len = 0, height = 0;
+    int len = 0, hg = 0;
     while(getline(plik, linia)){
-        for(string::iterator it = linia.begin(); it != linia.end(); it++){
+        for(string::const_iterator it = linia.begin(); it != linia.end(); it++){
             if(*it == 'W'){
-                tab[len][height].push_back(point(len, height));
-                tab[height][len].push_back(point(len, height));
+                points.push_back(point(len, hg));
             }
             len++;
         }
-        height++;
+        len = 0;
+        hg++;
     }
     plik.close();
+    
+    //nie dziala bo sciezka moze tez isc od prawej do lewej
+    //i wtedy sie wysypuje, sprobowalbym moze jednak zrobic graf ze wszystkich punktow
+    //tej sciezki i po nim DFSa, w teorii zadziala, ale trzeba dobrze graf zaprezentowac
+    copy(points.begin(), points.end(), ostream_iterator<point>(cout, ""));
+
+    for(int i = 0; i < points.size() - 1; i++){
+        point a1 = points.at(i);
+        for(int j = i + 1; j < points.size(); j++){
+            if(abs(points.at(j).x + points.at(j).y - a1.x - a1.y) == 1){
+                tab[a1.x][a1.y].push_back(points.at(j));
+                tab[points.at(j).x][points.at(j).y].push_back(a1);
+                break;
+            }
+        }
+    }
+    cout<<"size: "<<points.size();
 
     DFS(start_cord, end_cord);
 
-    if(vis[end_cord.x][end_cord.y]) cout<<"TAK";
+    if(vis[end_cord.x][end_cord.y]) yes();
     else nope();
-
+   
     return 0;
 }
