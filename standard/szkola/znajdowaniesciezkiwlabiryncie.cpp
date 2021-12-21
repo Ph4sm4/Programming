@@ -10,20 +10,20 @@ struct point{
 };
 
 ostream &operator<<(ostream &wyjscie, const point &p){
-        return wyjscie<<p.y<<","<<p.x<<'\n';
+        return wyjscie<<p.x+1<<","<<p.y+1;
 }
 
 vector<point> points;
 vector<point> tab[100][100];
 bool vis[100][100];
 
-void nope(){
-    cout<<"VALID PATH DOES NOT EXIST";
+void nope(const point _start, const point _end){
+    cout<<"VALID PATH FROM ("<<_start<<") TO ("<<_end<<") DOES NOT EXIST";
     exit(0);
 }
 
-void yes(){
-    cout<<"VALID PATH EXISTS";
+void yes(const point _start, const point _end){
+    cout<<"VALID PATH FROM ("<<_start<<") TO ("<<_end<<") EXISTS";
     exit(0);
 }
 
@@ -37,33 +37,75 @@ void DFS(point a, point end){
     }
 }
 
+
+void display(){
+    ifstream plik;
+    plik.open("labirynt.txt");
+    string disp;
+    while(getline(plik, disp)){
+        for(auto e : disp) cout<<(e == 'X'? 'X': ' ');
+        cout<<'\n';
+    }
+    plik.close();
+}
+
+
+//TO DO:
+//DODAC PODSWIETLANIE WLASCIWEJ SCIEZKI jak to zrobic, chuj wie
+
 int main(){
 
     ifstream plik;
+    display();
+
+//=====================================================================================================
     plik.open("labirynt.txt");
     string temp;
     point end_cord = {0,0};
     point start_cord = {0,0};
     bool startline = false;
+//=====================================================================================================
+    bool found_entry = true;
+    int entry_count = 0;
+    getline(plik, temp);
+    for(string::iterator it = temp.begin(); it != temp.end(); it++){
+        if(*it == 'W'){
+            start_cord.x = distance(temp.begin(), it);
+            break;
+        }
+        if(entry_count == temp.length()-1){
+            found_entry = false;
+        }
+        entry_count++;
+    }//otrzymanie wspolrzednych punktu wejscia, jesli istnieje
+    if(!found_entry){
+        cout<<"ENTRY POINT NOT FOUND";
+        exit(0);
+    }
+//=====================================================================================================
+    bool exit_point_found = true;
     while(getline(plik, temp)){
+        bool temp_exit = false;
         for(string::iterator it = temp.begin(); it != temp.end(); it++){
             if(*it == 'W') {
                 end_cord.x = distance(temp.begin(), it);
-                if(!startline) {
-                    start_cord.x = distance(temp.begin(), it);
-                    startline = true;
-                }
+                temp_exit = true;
                 break;
             }
         }
+        if(!temp_exit) exit_point_found = false;
+        else exit_point_found = true;
         end_cord.y++;
-    }
+    }//otrzymanie wspolrzednych punktu wyjscia, jesli istnieje
+    
     plik.close();
 
+    if(!exit_point_found){
+        cout<<"EXIT POINT NOT FOUND";
+        exit(0);
+    }
+//=====================================================================================================
     end_cord.y--;
-    //cout<<start_cord;
-    //cout<<end_cord;
-    //cout<<endl;
     plik.open("labirynt.txt");
 
     string linia;
@@ -77,38 +119,24 @@ int main(){
         }
         len = 0;
         hg++;
-    }
+    }//wczytywanie punktow sciezek
     plik.close();
-    
-    //nie dziala bo sciezka moze tez isc od prawej do lewej
-    //i wtedy sie wysypuje, sprobowalbym moze jednak zrobic graf ze wszystkich punktow
-    //tej sciezki i po nim DFSa, w teorii zadziala, ale trzeba dobrze graf zaprezentowac
-    //copy(points.begin(), points.end(), ostream_iterator<point>(cout, ""));
-    //cout<<endl;
+//=====================================================================================================
     for(int i = 0; i < points.size() - 1; i++){
         point a1 = points.at(i);
         for(int j = i + 1; j < points.size(); j++){
             point a2 = points.at(j);
             if(((a1.x == a2.x) && (abs(a1.y-a2.y) == 1)) || ((a1.y == a2.y) && (abs(a1.x-a2.x) == 1))){
-                //cout<<"if is true: "<<a1.x<<","<<a1.y<<" | "<<a2.x<<","<<a2.y<<" difference x: "<<abs(a1.x-a2.x)<<" difference y: "<<abs(a1.y-a2.y)<<endl;
                 tab[a1.x][a1.y].push_back(a2);
                 tab[a2.x][a2.y].push_back(a1);
             }
         }
-    }
-    //cout<<endl;
-    //for_each(points.begin(), points.end(), [](const point a){cout<<tab[a.x][a.y].size()<<endl;});
-    //cout<<endl;
-    // for_each(points.begin(), points.end(), [](const point a){
-    //     cout<<"sasiedzi punktu: "<<a;
-    //     for_each(tab[a.x][a.y].begin(), tab[a.x][a.y].end(), [](const point b){cout<<b;});
-    //     cout<<"---"<<endl;
-    // });
-
+    }//wczytywanie grafu
+//=====================================================================================================
     DFS(start_cord, end_cord);
 
-    if(vis[end_cord.x][end_cord.y]) yes();
-    else nope();
+    if(vis[end_cord.x][end_cord.y]) yes(start_cord, end_cord);
+    else nope(start_cord, end_cord);
    
     return 0;
 }
