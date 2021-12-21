@@ -61,9 +61,9 @@ int main(){
     plik.close();
 
     end_cord.y--;
-    cout<<start_cord;
-    cout<<end_cord;
-    cout<<endl;
+    //cout<<start_cord;
+    //cout<<end_cord;
+    //cout<<endl;
     plik.open("labirynt.txt");
 
     string linia;
@@ -83,27 +83,27 @@ int main(){
     //nie dziala bo sciezka moze tez isc od prawej do lewej
     //i wtedy sie wysypuje, sprobowalbym moze jednak zrobic graf ze wszystkich punktow
     //tej sciezki i po nim DFSa, w teorii zadziala, ale trzeba dobrze graf zaprezentowac
-    copy(points.begin(), points.end(), ostream_iterator<point>(cout, ""));
-    cout<<endl;
+    //copy(points.begin(), points.end(), ostream_iterator<point>(cout, ""));
+    //cout<<endl;
     for(int i = 0; i < points.size() - 1; i++){
         point a1 = points.at(i);
         for(int j = i + 1; j < points.size(); j++){
             point a2 = points.at(j);
             if(((a1.x == a2.x) && (abs(a1.y-a2.y) == 1)) || ((a1.y == a2.y) && (abs(a1.x-a2.x) == 1))){
-                cout<<"if is true: "<<a1.x<<","<<a1.y<<" | "<<a2.x<<","<<a2.y<<" difference x: "<<abs(a1.x-a2.x)<<" difference y: "<<abs(a1.y-a2.y)<<endl;
+                //cout<<"if is true: "<<a1.x<<","<<a1.y<<" | "<<a2.x<<","<<a2.y<<" difference x: "<<abs(a1.x-a2.x)<<" difference y: "<<abs(a1.y-a2.y)<<endl;
                 tab[a1.x][a1.y].push_back(a2);
                 tab[a2.x][a2.y].push_back(a1);
             }
         }
     }
-    cout<<endl;
-    for_each(points.begin(), points.end(), [](const point a){cout<<tab[a.x][a.y].size()<<endl;});
-    cout<<endl;
-    for_each(points.begin(), points.end(), [](const point a){
-        cout<<"sasiedzi punktu: "<<a;
-        for_each(tab[a.x][a.y].begin(), tab[a.x][a.y].end(), [](const point b){cout<<b;});
-        cout<<"---"<<endl;
-    });
+    //cout<<endl;
+    //for_each(points.begin(), points.end(), [](const point a){cout<<tab[a.x][a.y].size()<<endl;});
+    //cout<<endl;
+    // for_each(points.begin(), points.end(), [](const point a){
+    //     cout<<"sasiedzi punktu: "<<a;
+    //     for_each(tab[a.x][a.y].begin(), tab[a.x][a.y].end(), [](const point b){cout<<b;});
+    //     cout<<"---"<<endl;
+    // });
 
     DFS(start_cord, end_cord);
 
