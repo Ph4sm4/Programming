@@ -9,23 +9,42 @@ struct point{
     friend ostream & operator<< (ostream &wyjscie, const point &p);
 };
 
+//=====================================================================================================
+
 ostream &operator<<(ostream &wyjscie, const point &p){
         return wyjscie<<p.x+1<<","<<p.y+1;
 }
 
+//=====================================================================================================
+
 vector<point> points;
 vector<point> tab[100][100];
-bool vis[100][100];
+bool vis[100][100]; //for DFS
+
+//=====================================================================================================
+
+int dist[100][100];
+bool vis2[100][100];
+queue<point> q;
+const int INF = 1 << 20; //for BFS
+
+//=====================================================================================================
 
 void nope(const point _start, const point _end){
     cout<<"VALID PATH FROM ("<<_start<<") TO ("<<_end<<") DOES NOT EXIST";
     exit(0);
 }
 
+//=====================================================================================================
+
 void yes(const point _start, const point _end){
-    cout<<"VALID PATH FROM ("<<_start<<") TO ("<<_end<<") EXISTS";
+    cout<<"VALID PATH FROM ("<<_start<<") TO ("<<_end<<") EXISTS\n";
+    cout<<"SHORTEST PATH LENGTH: "<<dist[_end.x][_end.y] + 2;
+    //entry point distance is 0, exit point is not getting involved
     exit(0);
 }
+
+//=====================================================================================================
 
 void DFS(point a, point end){
     vis[a.x][a.y] = true;
@@ -36,7 +55,7 @@ void DFS(point a, point end){
         }
     }
 }
-
+//=====================================================================================================
 
 void display(){
     ifstream plik;
@@ -49,12 +68,35 @@ void display(){
     plik.close();
 }
 
+//=====================================================================================================
 
-//TO DO:
-//DODAC PODSWIETLANIE WLASCIWEJ SCIEZKI jak to zrobic, chuj wie
+void BFS(const point _start){
+    for(int i = 0; i < 100; i++){
+        for(int j = 0; j < 100; j++){
+            dist[i][j] = INF;
+        }
+    }
+    vis2[_start.x][_start.y] = true;
+    dist[_start.x][_start.y] = 0;
+    q.push(_start);
+    while(!q.empty()){
+        point a = q.front();
+        q.pop();
+        for(auto sasiad : tab[a.x][a.y]){
+            if(!vis2[sasiad.x][sasiad.y]){
+                vis2[sasiad.x][sasiad.y] = true;
+                dist[sasiad.x][sasiad.y] = dist[a.x][a.y] + 1;
+                q.push(sasiad);
+            }
+        }
+
+    }
+
+}
+
+//=====================================================================================================
 
 int main(){
-
     ifstream plik;
     display();
 
@@ -134,6 +176,7 @@ int main(){
     }//wczytywanie grafu
 //=====================================================================================================
     DFS(start_cord, end_cord);
+    BFS(start_cord);
 
     if(vis[end_cord.x][end_cord.y]) yes(start_cord, end_cord);
     else nope(start_cord, end_cord);
