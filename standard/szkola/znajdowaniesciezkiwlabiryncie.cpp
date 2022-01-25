@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#include <Windows.h>
+#include <cstdio>
 using namespace std;
 
 struct point{
@@ -155,8 +157,23 @@ void display(){
     ifstream plik;
     plik.open("labirynt.txt");
     string disp;
+
+    HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    WORD changed = BACKGROUND_RED | BACKGROUND_INTENSITY;
+    WORD normal = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED;
+    
     while(getline(plik, disp)){
-        for(auto e : disp) cout<<(e == 'X'? 'X': ' ');
+        for(auto e : disp){
+            if(e == 'X'){    
+                cout<<'X';
+            }
+            else{
+                SetConsoleTextAttribute(handle, changed);
+                cout<<' ';
+            }
+            SetConsoleTextAttribute(handle, normal);
+        }
+        
         cout<<'\n';
     }
     plik.close();
