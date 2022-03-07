@@ -1,12 +1,54 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+const int N = 1 < 10;
+vector<int> tab[N];
+bool vis[N];
+queue<int> q;
+int dist[N];
+
+void DFS(int a)
+{
+    vis[a] = true;
+
+    for (auto sasiad : tab[a])
+    {
+        if (!vis[sasiad])
+        {
+            DFS(sasiad);
+        }
+    }
+}
+
+void BFS(int a)
+{
+    vis[a] = true;
+    dist[a] = 0;
+    q.push(a);
+
+    while (!q.empty())
+    {
+        int f = q.front();
+        q.pop();
+
+        for (auto sasiad : tab[f])
+        {
+            if (!vis[sasiad])
+            {
+                dist[sasiad] = dist[f] + 1;
+                vis[sasiad] = true;
+                q.push(sasiad);
+            }
+        }
+    }
+}
+
 struct kraw
 {
     int id;
     int waga;
 };
-// 100
+
 vector<kraw> v[500010];
 long long dist[500010];
 const long long inf = LONG_LONG_MAX;
@@ -49,11 +91,22 @@ void dijkstra(int x)
 
 int main()
 {
-    cin.tie(0);
-    cout.tie(0);
-    ios_base::sync_with_stdio(0);
-    int n, m;
-    cin >> n >> m;
+    int wierzcholki, krawedzie;
+    // fstream plik;
+    // plik.open("dysko.txt");
+
+    cin >> wierzcholki >> krawedzie;
+
+    for (int i = 0; i < krawedzie; i++)
+    {
+        int a, b;
+        cin >> a >> b;
+        tab[a].push_back(b);
+    }
+
+    /*
+    wczytanie dla dijkstry
+
     for (int i = 0; i < m; i++)
     {
         int a, b, c;
@@ -61,16 +114,16 @@ int main()
         v[a].push_back({b, c});
         // v[b].push_back({a, c});
     }
+    */
 
-    dijkstra(1);
+    BFS(0);
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < wierzcholki; i++)
     {
-        if (dist[i] == inf)
-            cout << "-1\n";
-        else
-            cout << dist[i] << '\n';
+        cout << i << ". " << dist[i] << '\n';
     }
+
+    // plik.close();
 
     return 0;
 }
