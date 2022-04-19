@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int n = 1000;
+const int n = 1200;
 int chooseRandom()
 {
     int type = rand() % 3;
@@ -23,20 +23,31 @@ int main()
     // duze litery: 65 - 90
     // male litery: 97 - 122 wszystko wlacznie jest
     fstream plik;
-    plik.open("kody_zawodnik_val.txt", ios::out);
+
     string kod = "VAZ";
+    int idNum = 1;
+    int codeCount = 0;
     while (v.size() != n)
     {
+        plik.open("ids/id" + to_string(idNum) + ".txt", ios::out | ios::app);
         while (kod.length() != 6)
         {
             kod += char(chooseRandom());
         }
         if (!count(v.begin(), v.end(), kod))
+        {
             v.push_back(kod);
+            plik << kod << endl;
+            codeCount++;
+            if (codeCount == 6)
+            {
+                codeCount = 0;
+                idNum++;
+            }
+        }
         kod = "VAZ";
+        plik.close();
     }
-    copy(v.begin(), v.end(), ostream_iterator<string>(plik, "\n"));
-    plik.close();
 
     return 0;
 }

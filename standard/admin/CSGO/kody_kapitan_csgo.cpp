@@ -23,20 +23,25 @@ int main()
     // duze litery: 65 - 90
     // male litery: 97 - 122 wszystko wlacznie jest
     fstream plik;
-    plik.open("kody_kapitan_csgo.txt", ios::out);
+
     string kod = "CSK";
+    int idNum = 1;
     while (v.size() != n)
     {
+        plik.open("ids/id" + to_string(idNum) + ".txt", ios::out);
         while (kod.length() != 6)
         {
             kod += char(chooseRandom());
         }
         if (!count(v.begin(), v.end(), kod))
+        {
             v.push_back(kod);
+            plik << kod << '\n';
+            idNum++;
+        }
         kod = "CSK";
+        plik.close();
     }
-    copy(v.begin(), v.end(), ostream_iterator<string>(plik, "\n"));
-    plik.close();
 
     return 0;
 }
