@@ -39,7 +39,6 @@ int main()
             // biale szachuje czarne
             bool bialySzachRow = true;
             bool bialySzachCol = true;
-            cout << "------" << endl;
             for (int i = 0; i < 8; i++)
             {
                 bool pionekFoundRow = false;
