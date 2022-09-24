@@ -39,7 +39,7 @@ int main()
             v.push_back(kod);
             plik << kod << endl;
             codeCount++;
-            if (codeCount == 6)
+            if (codeCount == 5)
             {
                 codeCount = 0;
                 idNum++;
