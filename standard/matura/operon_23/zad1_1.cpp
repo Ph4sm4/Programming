@@ -4,15 +4,13 @@
 #include <cmath>
 using namespace std;
 
-int oct_to_dec(string x)
+int bin_to_dec(string x)
 {
     int sum = 0;
     int p = 0;
     for (int i = x.length() - 1; i >= 0; i--)
     {
-        if ((x[i] - '0'))
-            sum += pow(2, (x[i] - '0') * p);
-        p++;
+        sum += pow(2, p++) * (x[i] - '0');
     }
     return sum;
 }
@@ -37,31 +35,35 @@ int main()
     int likely = 0;
     int wrong = 0;
 
-    int prevVal;
+    int prevVal = -1;
 
     while (plik >> time >> weight)
     {
         int kwarta = (int)weight[0] - 64;
         // 0 - 249, 250 - 499, 500 - 749, 750 - 999
         string binWeight = weight.substr(1, weight.length() - 1);
-        int actualWeight = (kwarta - 1) * 250 + oct_to_dec(binWeight);
+        int actualWeight = (kwarta - 1) * 250 + bin_to_dec(binWeight);
 
-        if (!prevVal)
+        cout << prevVal << " " << actualWeight << endl;
+        if (prevVal == -1)
+        {
             good++;
+            prevVal = actualWeight;
+        }
         else if (abs(prevVal - actualWeight) <= prevVal * 0.05)
         {
             good++;
+            prevVal = actualWeight;
         }
         else if (abs(prevVal - actualWeight) > prevVal * 0.05 && abs(prevVal - actualWeight) <= prevVal * 0.1)
         {
             likely++;
+            prevVal = actualWeight;
         }
         else if (abs(prevVal - actualWeight) > prevVal * 0.1)
         {
             wrong++;
         }
-
-        prevVal = actualWeight;
     }
 
     cout << good << " " << likely << " " << wrong << endl;

@@ -4,7 +4,7 @@
 #include <cmath>
 using namespace std;
 
-int oct_to_dec(string x)
+int bin_to_dec(string x)
 {
     int sum = 0;
     int p = 0;
@@ -24,9 +24,9 @@ int getSecsFromTime(string time)
     string secs = time.substr(12, 5);
 
     int sec = 0;
-    sec += (((hours[0] - 65)) * 6 + oct_to_dec(hours.substr(1, 4))) * 3600;
-    sec += (((minutes[0] - 65)) * 15 + oct_to_dec(minutes.substr(1, 4))) * 60;
-    sec += ((secs[0] - 65)) * 15 + oct_to_dec(secs.substr(1, 4));
+    sec += (((hours[0] - 65)) * 6 + bin_to_dec(hours.substr(1, 4))) * 3600;
+    sec += (((minutes[0] - 65)) * 15 + bin_to_dec(minutes.substr(1, 4))) * 60;
+    sec += ((secs[0] - 65)) * 15 + bin_to_dec(secs.substr(1, 4));
 
     return sec;
 }
@@ -54,7 +54,7 @@ int main()
         int kwarta = (int)weight[0] - 64;
         // 0 - 249, 250 - 499, 500 - 749, 750 - 999
         string binWeight = weight.substr(1, weight.length() - 1);
-        int actualWeight = (kwarta - 1) * 250 + oct_to_dec(binWeight);
+        int actualWeight = (kwarta - 1) * 250 + bin_to_dec(binWeight);
 
         if (startSec == 0)
         {
@@ -92,31 +92,24 @@ int main()
         prevVal = actualWeight;
     }
     int len = goodEnd - goodStart;
-    int lH = len / 3600;
+    string lH = to_string(len / 3600);
     len %= 3600;
-    int lM = len / 60;
+    string lM = to_string(len / 60);
     len %= 60;
-    int lS = len % 60;
+    string lS = to_string(len % 60);
 
-    int sH = goodStart / 3600;
-    goodStart %= 3600;
-    int sM = goodStart / 60;
-    goodStart %= 60;
-    int sS = goodStart % 60;
-
-    int eH = goodEnd / 3600;
-    goodEnd %= 3600;
-    int eM = goodEnd / 60;
-    goodEnd %= 60;
-    int eS = goodEnd % 60;
+    while (lH.length() < 2)
+        lH.insert(0, "0");
+    while (lM.length() < 2)
+        lM.insert(0, "0");
+    while (lS.length() < 2)
+        lS.insert(0, "0");
 
     plik.close();
 
     ofstream plik2;
     plik2.open("./wyniki/wyniki1.txt", ios::app);
 
-    plik2 << "1.2." << sH << ":" << sM << ":" << sS << endl;
-    plik2 << "1.2." << eH << ":" << eM << ":" << eS << endl;
     plik2 << "1.2." << lH << ":" << lM << ":" << lS << endl;
 
     plik2.close();

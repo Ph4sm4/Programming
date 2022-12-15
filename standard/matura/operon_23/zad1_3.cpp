@@ -4,7 +4,7 @@
 #include <cmath>
 using namespace std;
 
-int oct_to_dec(string x)
+int bin_to_dec(string x)
 {
     int sum = 0;
     int p = 1;
@@ -37,9 +37,9 @@ string dec_to_bin(int x)
 
 string translateTime(string time)
 {
-    int h = oct_to_dec(time.substr(0, 2));
-    int m = oct_to_dec(time.substr(3, 2));
-    int s = oct_to_dec(time.substr(6, 2));
+    int h = bin_to_dec(time.substr(0, 2));
+    int m = bin_to_dec(time.substr(3, 2));
+    int s = bin_to_dec(time.substr(6, 2));
 
     string outH = char((h / 6) + 65) + dec_to_bin(h % 6);
     string outM = char((m / 15) + 65) + dec_to_bin(m % 15);
@@ -51,7 +51,7 @@ string translateTime(string time)
 
 string translateWeight(string weight)
 {
-    int d = oct_to_dec(weight);
+    int d = bin_to_dec(weight);
 
     return char((d / 250) + 65) + dec_to_bin(d % 250);
 }
