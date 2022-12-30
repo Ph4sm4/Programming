@@ -1,0 +1,13 @@
+5.1 Mój czas dla ciebie, 20
+5.2 pelnometrazowych: 53, seriali: 40
+5.3
+IMIE	NAZWISKO	liczba_seriali
+Hanna	Lejer	36
+Natalia	Ĺata	15
+5.4 Patrycja Sawicka
+5.5
+IMIE	NAZWISKO
+Alicja	SzyĹ‚o
+Karolina	Chylarecka	
+Katarzyna	Ostaszkiewicz
+5.6 I ĹĽe ciÄ™ nie opuszczÄ™
