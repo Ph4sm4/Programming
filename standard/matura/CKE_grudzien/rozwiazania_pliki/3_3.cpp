@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cmath>
 using namespace std;
 
 const int N = 2000000;
@@ -27,7 +28,7 @@ void execSito()
 int main()
 {
     ifstream plik;
-    plik.open("../dane/liczby_przyklad.txt");
+    plik.open("../dane/liczby.txt");
 
     int x;
     execSito();
@@ -40,9 +41,9 @@ int main()
     while (plik >> x)
     {
         int rozkladyCurrent = 0;
-        for (int i = 2; i <= 1000000; i++)
+        for (int i = 2; i <= ceil(x / 2); i++)
         {
-            if (sito[i] && sito[x - i] && x - i != i)
+            if (sito[i] && sito[x - i])
             {
                 rozkladyCurrent++;
             }
@@ -63,10 +64,10 @@ int main()
 
     plik.close();
 
-    // ofstream plik2;
-    // plik2.open("../wyniki/wyniki3.txt");
-    // plik2 << ct;
-    // plik2.close();
+    ofstream plik2;
+    plik2.open("../wyniki/wyniki3.txt", ios::app);
+    plik2 << liczbaMax << " " << rozkladyMax << " " << liczbaMin << " " << rozkladyMin;
+    plik2.close();
 
     return 0;
 }
