@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "zadanie-4_1",
+      "appliesTo": "rozwiazania/4_1.cpp",
+      "type": "launch"
+    }
+  ]
+}
