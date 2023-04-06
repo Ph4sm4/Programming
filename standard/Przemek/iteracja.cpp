@@ -14,69 +14,66 @@ int main()
     // lub:
     // typ_zmiennej nazwa_zmiennej1, nazwa_zmiennej2;
 
+    int nadpisanie = 1000;
     int liczba = 5 + 3;
-    liczba = liczba + 7;
-    liczba = liczba * 3;
-    cout << liczba << endl;
+    liczba = nadpisanie;
+    cout << "liczba poczatkowo: " << liczba << endl;
+    cout << "liczba po nadpisaniu: " << liczba << endl;
 
-    string wynik = "";
-    string imie = "auto";
-
-    for (int i = 0; i < 100; i++)
-    {
-        wynik = wynik + imie;
-    }
+    // napisz program, ktory wczyta od uzytkownika (wraz z komunikatami na ekranie) dwie liczby a i b, a nastepnie
+    // podniesie a do potegi b
 
     /* wytlumacz jaka jest roznica miedzy zapisem:
-    string imie = "Olaf";
-    cout << imie;
-
-    a
-
-    string imie = "Olaf";
-    cout << "imie";
-
-    =========================================================
-
-    ktory kod zadziala, a ktory nie :
 string imie = "Olaf";
-    1. cout << imie + "Dalach";
+cout << imie;
 
-    2.
-    string imie = "Olaf";
-    string nazwisko = "Dalach";
-    cout << imie + nazwisko;
+a
 
-    =========================================================
+string imie = "Olaf";
+cout << "imie";
 
-    co zostanie wypisane?
-    int liczba = 5.5;
-    cout << liczba;
+=========================================================
 
-    float liczba2 = 2.123;
-    cout << liczba2;
+ktory kod zadziala, a ktory nie :
+string imie = "Olaf";
+1. cout << imie + "Dalach";
 
-    =========================================================
+2.
+string imie = "Olaf";
+string nazwisko = "Dalach";
+cout << imie + nazwisko;
 
-    co zostanie wypisane?
-    int liczba1 = 3;
-    int liczba2 = 4;
-    cout << liczba1 / liczba2;
+=========================================================
 
-    int liczba3 = 4;
-    float liczba4 = 5;
-    cout << liczba3 / liczba4;
+co zostanie wypisane?
+int liczba = 5.5;
+cout << liczba;
+
+float liczba2 = 2.123;
+cout << liczba2;
+
+=========================================================
+
+co zostanie wypisane?
+int liczba1 = 3;
+int liczba2 = 4;
+cout << liczba1 / liczba2;
+
+int liczba3 = 4;
+float liczba4 = 5;
+cout << liczba3 / liczba4;
 
 
-    =========================================================
+=========================================================
 
-    1. napisz petle, ktora do liczby 10 doda liczbe podana przez uzytkownika 7 razy
-    2. napisz petle, ktora do slowa "drzewo" dopisze "kasztanowe" 3 razy (wynik ma byc: drzewokasztanowekasztanowekasztanowe)
-    3. napisz petle, ktora sprawdzi w jaki sposob liczba 4 dzieli sie przez liczby 1,2,...,10 (zalezy nam na DOKLADNYM wyniku - z przecinkiem)
-    4. napisz petle, ktora przemnozy przez siebie liczbe 2, dziesiec razy
-    */
+1. napisz petle, ktora do liczby 10 doda liczbe podana przez uzytkownika 7 razy
+2. napisz petle, ktora do slowa "drzewo" dopisze "kasztanowe" 3 razy (wynik ma byc: drzewokasztanowekasztanowekasztanowe)
+3. napisz petle, ktora sprawdzi w jaki sposob liczba 4 dzieli sie przez liczby 1,2,...,10 (zalezy nam na DOKLADNYM wyniku - z przecinkiem)
+4. napisz petle, ktora przemnozy przez siebie liczbe 2, dziesiec razy
 
-    cout << wynik << endl;
+MOZNA PRZYPISYWAC DO JEDNEJ ZMIENNEJ WARTOSCI INNEJ ZMIENNEJ
+*/
+
     // int n;
     // cout << "Podaj n: ";
     // cin >> n;
