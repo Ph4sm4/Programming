@@ -14,11 +14,24 @@ int main()
     // lub:
     // typ_zmiennej nazwa_zmiennej1, nazwa_zmiennej2;
 
-    int nadpisanie = 1000;
-    int liczba = 5 + 3;
-    liczba = nadpisanie;
-    cout << "liczba poczatkowo: " << liczba << endl;
-    cout << "liczba po nadpisaniu: " << liczba << endl;
+    int n;
+    cin >> n;
+    if (n > 1000 && n < 2000)
+    {
+        cout << "wieksze niz 1000 i mniejsze o 1500" << endl;
+    }
+    else if (n > 1000 && n < 1500)
+    {
+        cout << "wieksze niz 1000 i mniejsze o 2000" << endl;
+    }
+    else if (n < 1000)
+    {
+        cout << "mniejsza niz 1000" << endl;
+    }
+    else if (n == 1000)
+    {
+        cout << "rowna" << endl;
+    }
 
     // napisz program, ktory wczyta od uzytkownika (wraz z komunikatami na ekranie) dwie liczby a i b, a nastepnie
     // podniesie a do potegi b
@@ -72,6 +85,20 @@ cout << liczba3 / liczba4;
 4. napisz petle, ktora przemnozy przez siebie liczbe 2, dziesiec razy
 
 MOZNA PRZYPISYWAC DO JEDNEJ ZMIENNEJ WARTOSCI INNEJ ZMIENNEJ
+
+=========================================================
+
+1. Napisz program, który dla dwóch dowolnych liczb naturalnych a i b, podniesie a do potegi b
+2. Napisz program, ktory zliczy sume liczb od 1 do 20
+3. Napisz program, ktory dla podanego a i b, zliczy sume liczb od a do b wlacznie
+4. Napisz program, ktory wypisze slowo "wieksza" jesli liczba jest wieksza od 1000, "mniejsza" jesli jest mniejsza od 1000 oraz "rowna" jesli jest rowna 1000
+5. Reszta z dzielenia i operator modulo
+6. Napisz program, ktory dla podanej liczby z klawiatury sprawdzi czy dana liczba jest parzysta i wypisze "tak" jesli jest parzysta i "nie" jesli nie jest
+7. Napisz program, ktory dla podanego n, obliczy n!
+    przyklad: dla n = 5
+    wykona operacje: 1 * 2 * 3 * 4 * 5, a nastepnie wypisze wynik 120
+
+
 */
 
     // int n;
