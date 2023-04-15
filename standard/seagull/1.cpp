@@ -1,4 +1,8 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+#include <iterator>
 using namespace std;
 
 int main()
