@@ -10,27 +10,30 @@ int main()
     // deklaracja zmiennej:
     // typ_zmiennej nazwa_zmiennej1;
     // typ_zmiennej nazwa_zmiennej2;
+    /*
+        int dluga_nazwa_zmiennej;
+        int dlugaNazwaZmiennej;
+        int DlugoNazwaZmiennej;
+        int 1234;
+
+    */
 
     // lub:
     // typ_zmiennej nazwa_zmiennej1, nazwa_zmiennej2;
 
-    int n;
-    cin >> n;
-    if (n > 1000 && n < 2000)
+    /*
+        prawda = true
+        !prawda -> false
+
+        prawda = false
+        !prawda -> true
+
+        12 == 15, >, <, >=, <=, !=
+    */
+
+    for (;;)
     {
-        cout << "wieksze niz 1000 i mniejsze o 1500" << endl;
-    }
-    else if (n > 1000 && n < 1500)
-    {
-        cout << "wieksze niz 1000 i mniejsze o 2000" << endl;
-    }
-    else if (n < 1000)
-    {
-        cout << "mniejsza niz 1000" << endl;
-    }
-    else if (n == 1000)
-    {
-        cout << "rowna" << endl;
+        // program
     }
 
     // napisz program, ktory wczyta od uzytkownika (wraz z komunikatami na ekranie) dwie liczby a i b, a nastepnie
@@ -92,12 +95,26 @@ MOZNA PRZYPISYWAC DO JEDNEJ ZMIENNEJ WARTOSCI INNEJ ZMIENNEJ
 2. Napisz program, ktory zliczy sume liczb od 1 do 20
 3. Napisz program, ktory dla podanego a i b, zliczy sume liczb od a do b wlacznie
 4. Napisz program, ktory wypisze slowo "wieksza" jesli liczba jest wieksza od 1000, "mniejsza" jesli jest mniejsza od 1000 oraz "rowna" jesli jest rowna 1000
+
 5. Reszta z dzielenia i operator modulo
 6. Napisz program, ktory dla podanej liczby z klawiatury sprawdzi czy dana liczba jest parzysta i wypisze "tak" jesli jest parzysta i "nie" jesli nie jest
 7. Napisz program, ktory dla podanego n, obliczy n!
     przyklad: dla n = 5
     wykona operacje: 1 * 2 * 3 * 4 * 5, a nastepnie wypisze wynik 120
-
+8. napisz program, ktory bedzie dzialal tak:
+    - poprosi o dwie liczby, a oraz b
+    - nastepnie zapyta o wybranie jednej z podanych operacji, wykona ja i wypisze wynik
+        operacje to:
+            - dodawanie
+            - odejmowanie
+            - mnozenie
+            - dzielenie
+            - podnoszenie liczby a do potegi b
+            - sprawdzanie czy liczby sa rowne
+            - obliczanie silni z liczby a oraz silni z liczby b
+            - obliczy a modulo b (czyli reszte z dzielenia a przez b)
+            - obliczy sume wszystkich liczb z przedzialu [a, b]
+            - poda ile liczb jest parzystych w przedziale [a, b]
 
 */
 
