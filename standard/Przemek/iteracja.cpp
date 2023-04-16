@@ -29,12 +29,37 @@ int main()
         !prawda -> true
 
         12 == 15, >, <, >=, <=, !=
+
+        operatory: +, -, /, *, %
+
+        15 / 4 = 3 r 3
+        20 / 5 = 4 r 0
+        4 / 2 = 2 r 0
+        3 / 2 = 1 r 1
+
+        3 % 3 = ... r 0
+        4 % 3 = ... r 1
+        5 % 3 = ... r 2
+        6 % 2 = ... r 0
+        5 % 2 = ... r 1
+        n % 2 = ... r 0
     */
 
-    for (;;)
-    {
-        // program
-    }
+    int a = 15, b = 12;
+    cout << a % b << " " << b % a << endl;
+
+    // int n;
+    // cin >> n;
+    // int reszta = n % 3;
+    //  cout << reszta;
+    // if (n % 3 == 0)
+    // {
+    //     cout << "podzielna przez 3";
+    // }
+    // else
+    // {
+    //     cout << "nie podzielna przez 3";
+    // }
 
     // napisz program, ktory wczyta od uzytkownika (wraz z komunikatami na ekranie) dwie liczby a i b, a nastepnie
     // podniesie a do potegi b
