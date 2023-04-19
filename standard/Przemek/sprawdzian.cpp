@@ -8,6 +8,7 @@ Lewa strona jest suma kolejnych n liczb parzystych. Po prawej stronie podany jes
 2*1 + 2*2 + 2*3 + ... + 2*n = (1+n)*n
 
 
+
 Oblicz iteracyjnie lewą stronę równania.
 
 Napisz funkcję pozwalającą obliczyć prawą stronę.
