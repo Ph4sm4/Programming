@@ -1,16 +1,29 @@
 #include <iostream>
 using namespace std;
 
-int dodawanie(int a, int b)
-{
-    int suma = a + b;
-    return suma;
-}
-
 int main()
 {
-    int x = 5;
-    cout << dodawanie(6, 9);
+
+    int wiek;
+    cin >> wiek;
+    switch (wiek)
+    {
+    case 10:
+    {
+        cout << "dziesieciolatek";
+        break;
+    }
+    case 20:
+    {
+        cout << "dwudziestwolatek";
+        break;
+    }
+    case 30:
+    {
+        cout << "trzydziestolatek";
+        break;
+    }
+    }
 
     return 0;
 }
