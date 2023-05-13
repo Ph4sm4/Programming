@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int iloraz(int a, int b)
+float iloraz(float a, float b)
 {
     if (b == 0)
     {
@@ -12,9 +12,30 @@ int iloraz(int a, int b)
     return a / b;
 }
 
+bool czyRowne(float a, float b)
+{
+    if (a == b)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 int main()
 {
-    cout << iloraz(10, 0);
+    int a, b;
+    cin >> a >> b;
+    if (czyRowne(a, b) == true)
+    {
+        cout << "rowne";
+    }
+    // silnia z 4 -> 1 * 2 * 3 * 4
+    // silnia z 10 -> 1 * 2 * 3 * 4 .. * 10
+    // silnia z n -> 1 * 2 * 3 * ... * n
+    // silnia z 5 -> 1 * 2 * 3 * 4 * 5
     // int wiek;
     // cin >> wiek;
     // switch (wiek)
