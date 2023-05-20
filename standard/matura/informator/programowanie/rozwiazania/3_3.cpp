@@ -33,14 +33,14 @@ int main() {
 	/*for_each(v.begin(), v.end(), [](pair<int, int> a) {
 		cout << a.first << " " << a.second << " " << a.second - a.first + 1 << endl;
 		});*/
+
 	for (int i = 0; i < v.size(); i++) {
 		for (int j = 0; j < i; j++) {
-			if (zawierasie(v[j], v[i]) {
-				if(v[i])
+			if (zawierasie(v[j], v[i])) {
+				if(v[i].dl )
 			}
 			
 		}
-		m.insert(make_pair(przedzial, ct));
 	}
 	
 

@@ -7,14 +7,14 @@ int fibonacci(int n);
 
 int main()
 {
-    for (;;)
-    {
-        int n;
-        cout << "Podaj n: ";
-        cin >> n;
-        cout << fibonacci(n) << endl;
-        cout << silnia(n) << endl;
-    }
+    // for (;;)
+    // {
+    //     int n;
+    //     cout << "Podaj n: ";
+    //     cin >> n;
+    //     cout << fibonacci(n) << endl;
+    //     cout << silnia(n) << endl;
+    // }
 
     return 0;
 }

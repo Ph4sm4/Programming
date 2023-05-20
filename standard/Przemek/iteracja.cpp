@@ -162,6 +162,10 @@ MOZNA PRZYPISYWAC DO JEDNEJ ZMIENNEJ WARTOSCI INNEJ ZMIENNEJ
     // cout << 5 - 5 << endl; // 0
     // cout << 5 / 5 << endl; // 1
 
+    int a5 = 6;
+    int b5 = 5;
+    cout << "rownanie prostej to: y=" << a5 << "x+" << b5 << endl;
+
     return 0;
 }
 
