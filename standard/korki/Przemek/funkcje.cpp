@@ -28,6 +28,7 @@ int main()
 {
     int a, b;
     cin >> a >> b;
+
     if (czyRowne(a, b) == true)
     {
         cout << "rowne";
