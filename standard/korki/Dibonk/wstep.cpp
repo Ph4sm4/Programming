@@ -8,6 +8,11 @@ int main()
     int liczba_calkowita = 22500;
     float liczba_przecinkowa = 22.5;
 
+    /*
+        pobierz PIN od uzytkownika (1234 lub 123465577878...)
+        sprawdz czy ten PIN zgadza sie z wczesniej ustalonym (zakodowoanym) PINEM, najlepiej zeby byl okreslony jakos niezmienny
+    */
+
     bool zmiennaPrawdaFalsz = false;
     /*
         zmienna bool (boolean) przechowuje wartosci prawda/falsz (1/0)
