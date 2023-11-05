@@ -13,9 +13,29 @@ int main()
             wypisz na ekran wynik operacji Hello + " " + World;
     */
 
-    for (int i = 0;; i++)
+    const string PIN = "1234";
+    string PIN_wpisywany;
+    int proby = 3;
+
+    for (;;)
     {
-        cout << i << " ";
+        if (!proby)
+        {
+            cout << "*GUNSHOTSSSSS*, naura";
+            break;
+        }
+        cout << "Podaj pin: ";
+        cin >> PIN_wpisywany;
+
+        if (PIN_wpisywany == PIN)
+        {
+            cout << "Welcome in the bank";
+            break;
+        }
+        else // i++, ++i ; i--, --i
+        {
+            cout << "Niepoprawny PIN, pozostale proby: " << --proby << endl;
+        }
     }
 
     return 0;
