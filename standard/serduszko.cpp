@@ -54,5 +54,19 @@ int main()
         cout << endl;
     }
 
+    int numberOfRowsLowerSection = (n / 2) * 4;
+
+    for (int i = 0; i < numberOfRowsLowerSection; i++)
+    {
+        printXSpaces(i + 1); // spaces from wall
+        cout << "*";
+        printXSpaces(2 * n + numberOfRowsLowerSection - 3 - 2 * (i + 1));
+        if (i != numberOfRowsLowerSection - 1)
+            cout << "*";
+        else
+            cout << "";
+        cout << endl;
+    }
+
     return 0;
 }
