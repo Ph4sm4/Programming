@@ -20,7 +20,7 @@ int main()
         return 1;
     }
 
-    const int numberOfRowsUnderMain = ceil(float(n) / 3.0f);
+    const int numberOfRowsUnderMain = floor(float(n) / 2.0f);
 
     // spaces for the first row
     printXSpaces(numberOfRowsUnderMain);
@@ -43,9 +43,13 @@ int main()
         cout << "*";
         printXSpaces(n + i * 2); // miedzy pierwszym wybrzuszeniem
         cout << "*";
-        printXSpaces(n - (i + 1) * 2);
-        cout << "*";
-        printXSpaces(n + i * 2);
+        printXSpaces((n - 2) - 2 * (i + 1)); // miedzy wybrzuszeniami po srodku
+        if (i != numberOfRowsUnderMain - 1)
+            cout << "*";
+        else
+            cout << "";
+
+        printXSpaces(n + i * 2); // miedzy drugim wybrzuszeniem
         cout << "*";
         cout << endl;
     }
