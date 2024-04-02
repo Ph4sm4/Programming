@@ -1,0 +1,14 @@
+[
+{
+  "directory": "C:/Users/I9/Documents/GitHub/Programming/standard/cpp_studia/lab4/build",
+  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\sllist_test.dir\\sllist_test.cpp.obj -c C:\\Users\\I9\\Documents\\GitHub\\Programming\\standard\\cpp_studia\\lab4\\sllist_test.cpp",
+  "file": "C:/Users/I9/Documents/GitHub/Programming/standard/cpp_studia/lab4/sllist_test.cpp",
+  "output": "CMakeFiles/sllist_test.dir/sllist_test.cpp.obj"
+},
+{
+  "directory": "C:/Users/I9/Documents/GitHub/Programming/standard/cpp_studia/lab4/build",
+  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\sllist_test.dir\\sllist.cpp.obj -c C:\\Users\\I9\\Documents\\GitHub\\Programming\\standard\\cpp_studia\\lab4\\sllist.cpp",
+  "file": "C:/Users/I9/Documents/GitHub/Programming/standard/cpp_studia/lab4/sllist.cpp",
+  "output": "CMakeFiles/sllist_test.dir/sllist.cpp.obj"
+}
+]

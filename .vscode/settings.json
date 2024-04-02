@@ -98,5 +98,6 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "xutility": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "C:/Users/I9/Documents/GitHub/Programming/standard/cpp_studia/lab4"
 }

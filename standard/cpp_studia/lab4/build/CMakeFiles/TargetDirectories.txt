@@ -1,0 +1,3 @@
+C:/Users/I9/Documents/GitHub/Programming/standard/cpp_studia/lab4/build/CMakeFiles/sllist_test.dir
+C:/Users/I9/Documents/GitHub/Programming/standard/cpp_studia/lab4/build/CMakeFiles/edit_cache.dir
+C:/Users/I9/Documents/GitHub/Programming/standard/cpp_studia/lab4/build/CMakeFiles/rebuild_cache.dir
