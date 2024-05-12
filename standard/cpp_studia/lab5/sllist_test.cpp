@@ -235,6 +235,7 @@ int main()
     }
     /* first line of test elimination region
 
+
     last line of test elimination region */
 
     cerr << "End of tests." << endl;
