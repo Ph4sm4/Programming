@@ -1,5 +1,9 @@
 #include <iostream>
 #include <math.h>
+#include <wmp.h>
+
+#pragma comment(lib, "ole32.lib")
+#pragma comment(lib, "oleaut32.lib")
 using namespace std;
 
 void printXSpaces(int x)
@@ -10,7 +14,28 @@ void printXSpaces(int x)
 
 int main()
 {
-    int n;
+    CoInitialize(NULL);
+
+    IWMPPlayer *player = NULL;
+    CoCreateInstance(__uuidof(WindowsMediaPlayer), NULL, CLSCTX_INPROC_SERVER,
+                     __uuidof(IWMPPlayer), (void **)&player);
+
+    if (player)
+    {
+        IWMPMedia *media = NULL;
+        player->newMedia(L"yourfile.mp3", &media);
+        player->put_currentMedia(media);
+        player->controls->play();
+
+        MessageBox(NULL, L"Playing MP3. Click OK to exit.", L"MP3 Player", MB_OK);
+
+        player->close();
+        player->Release();
+    }
+
+    CoUninitialize();
+
+        int n;
     cout << "Podaj nieparzyste n (n >= 3): ";
     cin >> n;
 
